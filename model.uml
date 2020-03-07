@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>model</OriginalElement>
+  <nodes>
+    <node x="792.9889507810192" y="1603.0">model.Restoran</node>
+    <node x="1014.1618674476858" y="2295.0">model.Povar</node>
+    <node x="1139.8882436433298" y="0.0">model.EDINICA_IZMERENIYA</node>
+    <node x="904.8882436433298" y="647.0">model.Strava</node>
+    <node x="688.820935951022" y="732.0">model.StatusZakaza</node>
+    <node x="342.35775419982247" y="1147.0">model.Zakaz</node>
+    <node x="0.0" y="2782.0">model.DirectorTestMockito</node>
+    <node x="1063.3882436433298" y="200.0">model.Ingredient</node>
+    <node x="293.19999999999993" y="1949.0">model.Posetitel</node>
+    <node x="1686.1964209401708" y="1268.0">model.StravaTest</node>
+    <node x="175.0473782587144" y="2296.0">model.Director</node>
+    <node x="313.3346153846153" y="756.0">model.Oficiant</node>
+    <node x="967.6949803070481" y="2674.0">model.DirectorTest</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="model.DirectorTest" target="model.Director">
+      <point x="-427.5499999999997" y="-194.0" />
+      <point x="1043.1449803070484" y="2524.0" />
+      <point x="794.5473782587144" y="2524.0" />
+      <point x="265.5" y="98.5" />
+    </edge>
+    <edge source="model.Restoran" target="model.Posetitel">
+      <point x="-56.85000000000002" y="123.0" />
+      <point x="925.6389507810192" y="1929.0" />
+      <point x="762.4307692307692" y="1929.0" />
+      <point x="225.23076923076928" y="-123.0" />
+    </edge>
+    <edge source="model.Zakaz" target="model.Strava">
+      <point x="156.0" y="-183.0" />
+      <point x="680.3577541998225" y="1097.0" />
+      <point x="1011.8882436433298" y="1097.0" />
+      <point x="-107.0" y="135.0" />
+    </edge>
+    <edge source="model.DirectorTest" target="model.Zakaz">
+      <point x="-25.15000000000009" y="-194.0" />
+      <point x="1445.544980307048" y="2634.0" />
+      <point x="1549.6618674476858" y="2634.0" />
+      <point x="1549.6618674476858" y="1543.0" />
+      <point x="660.8577541998224" y="1543.0" />
+      <point x="136.4999999999999" y="183.0" />
+    </edge>
+    <edge source="model.DirectorTest" target="model.Oficiant">
+      <point x="125.75" y="-194.0" />
+      <point x="1596.4449803070481" y="2654.0" />
+      <point x="1582.6618674476858" y="2654.0" />
+      <point x="1582.6618674476858" y="997.0" />
+      <point x="507.3971153846153" y="997.0" />
+      <point x="90.5625" y="26.0" />
+    </edge>
+    <edge source="model.Povar" target="model.Restoran">
+      <point x="-30.0625" y="-99.5" />
+      <point x="1224.5993674476858" y="2275.0" />
+      <point x="1249.0714209401708" y="2275.0" />
+      <point x="1249.0714209401708" y="1919.0" />
+      <point x="1077.238950781019" y="1919.0" />
+      <point x="94.74999999999989" y="123.0" />
+    </edge>
+    <edge source="model.Zakaz" target="model.Ingredient">
+      <point x="-52.0" y="-183.0" />
+      <point x="472.35775419982247" y="1017.0" />
+      <point x="537.6158653846153" y="1017.0" />
+      <point x="537.6158653846153" y="617.0" />
+      <point x="1166.7973345524208" y="617.0" />
+      <point x="-59.09090909090901" y="183.5" />
+    </edge>
+    <edge source="model.DirectorTest" target="model.Strava">
+      <point x="226.3499999999999" y="-194.0" />
+      <point x="1697.044980307048" y="2654.0" />
+      <point x="1653.6964209401708" y="2654.0" />
+      <point x="1653.6964209401708" y="977.0" />
+      <point x="1225.8882436433298" y="977.0" />
+      <point x="107.0" y="135.0" />
+    </edge>
+    <edge source="model.Oficiant" target="model.Posetitel">
+      <point x="-38.8125" y="26.0" />
+      <point x="378.0221153846153" y="1017.0" />
+      <point x="320.85775419982247" y="1017.0" />
+      <point x="320.85775419982247" y="1889.0" />
+      <point x="349.5076923076922" y="1889.0" />
+      <point x="-187.69230769230774" y="-123.0" />
+    </edge>
+    <edge source="model.Povar" target="model.Zakaz">
+      <point x="30.0625" y="-99.5" />
+      <point x="1284.7243674476858" y="2275.0" />
+      <point x="1267.1401709401707" y="2275.0" />
+      <point x="1267.1401709401707" y="1553.0" />
+      <point x="630.524420866489" y="1553.0" />
+      <point x="106.16666666666652" y="183.0" />
+    </edge>
+    <edge source="model.DirectorTest" target="model.Povar">
+      <point x="-326.9499999999998" y="-194.0" />
+      <point x="1143.7449803070483" y="2574.0" />
+      <point x="1314.7868674476858" y="2574.0" />
+      <point x="60.125" y="99.5" />
+    </edge>
+    <edge source="model.DirectorTest" target="model.Ingredient">
+      <point x="377.25" y="-194.0" />
+      <point x="1847.9449803070481" y="2634.0" />
+      <point x="2406.6964209401713" y="2634.0" />
+      <point x="2406.6964209401713" y="607.0" />
+      <point x="1314.5246072796936" y="607.0" />
+      <point x="88.63636363636374" y="183.5" />
+    </edge>
+    <edge source="model.Zakaz" target="model.Posetitel">
+      <point x="15.166666666666629" y="183.0" />
+      <point x="539.5244208664891" y="1583.0" />
+      <point x="514.3473375331557" y="1583.0" />
+      <point x="514.3473375331557" y="1889.0" />
+      <point x="537.1999999999999" y="1889.0" />
+      <point x="0.0" y="-123.0" />
+    </edge>
+    <edge source="model.DirectorTestMockito" target="model.Director">
+      <point x="106.03125" y="-86.0" />
+      <point x="294.53125" y="2534.0" />
+      <point x="440.5473782587144" y="2534.0" />
+      <point x="-88.5" y="98.5" />
+    </edge>
+    <edge source="model.Ingredient" target="model.EDINICA_IZMERENIYA">
+      <point x="-81.25" y="-183.5" />
+      <point x="1144.6382436433298" y="175.0" />
+      <point x="1182.8882436433298" y="175.0" />
+      <point x="-43.0" y="75.0" />
+    </edge>
+    <edge source="model.Povar" target="model.StatusZakaza">
+      <point x="90.1875" y="-99.5" />
+      <point x="1344.8493674476858" y="2265.0" />
+      <point x="1286.696356502692" y="2265.0" />
+      <point x="1286.696356502692" y="1047.0" />
+      <point x="802.570935951022" y="1047.0" />
+      <point x="48.75" y="50.0" />
+    </edge>
+    <edge source="model.Restoran" target="model.StatusZakaza">
+      <point x="1.1368683772161603E-13" y="-123.0" />
+      <point x="982.4889507810193" y="1563.0" />
+      <point x="716.8577541998225" y="1563.0" />
+      <point x="716.8577541998225" y="1047.0" />
+      <point x="770.070935951022" y="1047.0" />
+      <point x="16.25" y="50.0" />
+    </edge>
+    <edge source="model.DirectorTestMockito" target="model.Oficiant">
+      <point x="-129.59375" y="-86.0" />
+      <point x="58.923820566406675" y="997.0" />
+      <point x="326.2721153846153" y="997.0" />
+      <point x="-90.5625" y="26.0" />
+    </edge>
+    <edge source="model.Director" target="model.Zakaz">
+      <point x="-141.60000000000014" y="-98.5" />
+      <point x="387.44737825871425" y="2245.0" />
+      <point x="233.00400808482584" y="2245.0" />
+      <point x="233.00400808482584" y="1583.0" />
+      <point x="418.19108753315584" y="1583.0" />
+      <point x="-106.16666666666663" y="183.0" />
+    </edge>
+    <edge source="model.Posetitel" target="model.Restoran">
+      <point x="150.1538461538462" y="-123.0" />
+      <point x="687.3538461538461" y="1909.0" />
+      <point x="849.8389507810192" y="1909.0" />
+      <point x="-132.64999999999998" y="123.0" />
+    </edge>
+    <edge source="model.DirectorTest" target="model.Posetitel">
+      <point x="-226.3499999999999" y="-194.0" />
+      <point x="1244.3449803070482" y="2594.0" />
+      <point x="1505.6618674476858" y="2594.0" />
+      <point x="1505.6618674476858" y="2225.0" />
+      <point x="699.8666666666667" y="2225.0" />
+      <point x="162.66666666666674" y="123.0" />
+    </edge>
+    <edge source="model.DirectorTestMockito" target="model.Strava">
+      <point x="-58.90625" y="-86.0" />
+      <point x="129.59375" y="2634.0" />
+      <point x="91.92382056640668" y="2634.0" />
+      <point x="91.92382056640668" y="1067.0" />
+      <point x="940.5549103099964" y="1067.0" />
+      <point x="-178.33333333333337" y="135.0" />
+    </edge>
+    <edge source="model.Zakaz" target="model.StatusZakaza">
+      <point x="0.0" y="-183.0" />
+      <point x="524.3577541998225" y="1027.0" />
+      <point x="705.070935951022" y="1027.0" />
+      <point x="-48.75" y="50.0" />
+    </edge>
+    <edge source="model.DirectorTestMockito" target="model.Zakaz">
+      <point x="-35.34375" y="-86.0" />
+      <point x="153.15625" y="2624.0" />
+      <point x="102.92382056640668" y="2624.0" />
+      <point x="102.92382056640668" y="1563.0" />
+      <point x="357.5244208664892" y="1563.0" />
+      <point x="-166.83333333333326" y="183.0" />
+    </edge>
+    <edge source="model.DirectorTestMockito" target="model.Ingredient">
+      <point x="-176.71875" y="-86.0" />
+      <point x="11.78125" y="2644.0" />
+      <point x="36.923820566406675" y="2644.0" />
+      <point x="36.923820566406675" y="587.0" />
+      <point x="1078.160970916057" y="587.0" />
+      <point x="-147.72727272727275" y="183.5" />
+    </edge>
+    <edge source="model.Restoran" target="model.Strava">
+      <point x="151.60000000000002" y="-123.0" />
+      <point x="1134.0889507810193" y="1583.0" />
+      <point x="1124.3882436433298" y="1583.0" />
+      <point x="1124.3882436433298" y="1127.0" />
+      <point x="1130.7771325322187" y="1127.0" />
+      <point x="11.888888888888914" y="135.0" />
+    </edge>
+    <edge source="model.Restoran" target="model.Zakaz">
+      <point x="-75.79999999999995" y="-123.0" />
+      <point x="906.6889507810192" y="1573.0" />
+      <point x="600.1910875331557" y="1573.0" />
+      <point x="75.83333333333326" y="183.0" />
+    </edge>
+    <edge source="model.Posetitel" target="model.Strava">
+      <point x="37.53846153846155" y="-123.0" />
+      <point x="574.7384615384615" y="1869.0" />
+      <point x="758.3716430887114" y="1869.0" />
+      <point x="758.3716430887114" y="1107.0" />
+      <point x="1035.6660214211076" y="1107.0" />
+      <point x="-83.22222222222217" y="135.0" />
+    </edge>
+    <edge source="model.StravaTest" target="model.Ingredient">
+      <point x="88.75000000000011" y="-62.0" />
+      <point x="2129.9464209401713" y="1127.0" />
+      <point x="2182.1882436433298" y="1127.0" />
+      <point x="2182.1882436433298" y="627.0" />
+      <point x="1255.4336981887843" y="627.0" />
+      <point x="29.545454545454504" y="183.5" />
+    </edge>
+    <edge source="model.Posetitel" target="model.Ingredient">
+      <point x="-225.23076923076928" y="-123.0" />
+      <point x="311.96923076923065" y="1889.0" />
+      <point x="250.92067475149258" y="1889.0" />
+      <point x="250.92067475149258" y="607.0" />
+      <point x="1137.251880006966" y="607.0" />
+      <point x="-88.63636363636374" y="183.5" />
+    </edge>
+    <edge source="model.DirectorTestMockito" target="model.Povar">
+      <point x="153.15625" y="-86.0" />
+      <point x="341.65625" y="2554.0" />
+      <point x="1074.2868674476858" y="2554.0" />
+      <point x="-180.375" y="99.5" />
+    </edge>
+    <edge source="model.DirectorTest" target="model.Restoran">
+      <point x="-125.75" y="-194.0" />
+      <point x="1344.9449803070481" y="2614.0" />
+      <point x="1527.6618674476858" y="2614.0" />
+      <point x="1527.6618674476858" y="1909.0" />
+      <point x="1115.138950781019" y="1909.0" />
+      <point x="132.64999999999975" y="123.0" />
+    </edge>
+    <edge source="model.Director" target="model.Restoran">
+      <point x="283.20000000000005" y="-98.5" />
+      <point x="812.2473782587144" y="2275.0" />
+      <point x="941.8389507810191" y="2275.0" />
+      <point x="941.8389507810191" y="1929.0" />
+      <point x="963.5389507810191" y="1929.0" />
+      <point x="-18.950000000000045" y="123.0" />
+    </edge>
+    <edge source="model.StravaTest" target="model.Strava">
+      <point x="-266.25" y="-62.0" />
+      <point x="1774.9464209401708" y="947.0" />
+      <point x="1297.221576976663" y="947.0" />
+      <point x="178.33333333333326" y="135.0" />
+    </edge>
+    <edge source="model.DirectorTestMockito" target="model.Restoran">
+      <point x="11.78125" y="-86.0" />
+      <point x="200.28125" y="2604.0" />
+      <point x="135.92382056640668" y="2604.0" />
+      <point x="135.92382056640668" y="1899.0" />
+      <point x="811.9389507810192" y="1899.0" />
+      <point x="-170.54999999999995" y="123.0" />
+    </edge>
+    <edge source="model.Povar" target="model.Posetitel">
+      <point x="-210.4375" y="-99.5" />
+      <point x="1044.2243674476858" y="2245.0" />
+      <point x="591.4222222222222" y="2245.0" />
+      <point x="54.222222222222285" y="123.0" />
+    </edge>
+    <edge source="model.Strava" target="model.Ingredient">
+      <point x="-107.0" y="-135.0" />
+      <point x="1011.8882436433298" y="627.0" />
+      <point x="1196.3427890978753" y="627.0" />
+      <point x="-29.545454545454504" y="183.5" />
+    </edge>
+    <edge source="model.DirectorTestMockito" target="model.Posetitel">
+      <point x="58.90625" y="-86.0" />
+      <point x="247.40625" y="2584.0" />
+      <point x="164.5473782587144" y="2584.0" />
+      <point x="164.5473782587144" y="2275.0" />
+      <point x="374.5333333333333" y="2275.0" />
+      <point x="-162.66666666666663" y="123.0" />
+    </edge>
+    <edge source="model.Zakaz" target="model.Oficiant">
+      <point x="-156.0" y="-183.0" />
+      <point x="368.35775419982247" y="1037.0" />
+      <point x="429.7721153846153" y="1037.0" />
+      <point x="12.9375" y="26.0" />
+    </edge>
+    <edge source="model.Povar" target="model.Strava">
+      <point x="150.3125" y="-99.5" />
+      <point x="1404.9743674476858" y="2255.0" />
+      <point x="1297.696356502692" y="2255.0" />
+      <point x="1297.696356502692" y="1037.0" />
+      <point x="1154.5549103099963" y="1037.0" />
+      <point x="35.666666666666515" y="135.0" />
+    </edge>
+    <edge source="model.Posetitel" target="model.Zakaz">
+      <point x="-37.53846153846155" y="-123.0" />
+      <point x="499.5244208664892" y="1583.0" />
+      <point x="509.1910875331557" y="1583.0" />
+      <point x="-15.166666666666742" y="183.0" />
+    </edge>
+    <edge source="model.Director" target="model.Posetitel">
+      <point x="0.0" y="-98.5" />
+      <point x="529.0473782587144" y="2275.0" />
+      <point x="428.7555555555555" y="2275.0" />
+      <point x="-108.44444444444446" y="123.0" />
+    </edge>
+    <edge source="model.Director" target="model.Strava">
+      <point x="-283.20000000000005" y="-98.5" />
+      <point x="245.84737825871434" y="2255.0" />
+      <point x="124.92382056640668" y="2255.0" />
+      <point x="124.92382056640668" y="1077.0" />
+      <point x="964.3326880877743" y="1077.0" />
+      <point x="-154.55555555555554" y="135.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8791044776119402" x="2712.4003831417617" y="2226.272988505747" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>Project Files</SCOPE>
+  <VISIBILITY>packageLocal</VISIBILITY>
+</Diagram>
+
