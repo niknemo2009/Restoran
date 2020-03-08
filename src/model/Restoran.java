@@ -52,6 +52,15 @@ public class Restoran {
         return zakazi;
     }
 
+    public List<Zakaz> getZakazi(Posetitel worker) {
+        if(worker instanceof Director)
+            return zakazi;
+        else {
+            System.out.println("go away");
+            return null;
+        }
+    }
+
     public String getName() {
         return name;
     }

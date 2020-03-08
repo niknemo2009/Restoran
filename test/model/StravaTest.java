@@ -11,36 +11,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @DisplayNameGeneration(IndicativeSentences.class)
 class StravaTest {
 
-
     private static Strava strava;
-    private static Ingredient cheese, pomidori, kapusta;
+    private Ingredient cheese = Mockito.mock(Ingredient.class);
+    private Ingredient pomidori = Mockito.mock(Ingredient.class);
+    private Ingredient kapusta = Mockito.mock(Ingredient.class);
 
     @BeforeAll
     public static void setup() {
-
-        cheese = Mockito.mock(Ingredient.class);
-        pomidori = Mockito.mock(Ingredient.class);
-        kapusta = Mockito.mock(Ingredient.class);
-
-        when(cheese.getPriceRoznica()).thenReturn(50);
-        when(cheese.getName()).thenReturn("Сыр Российский");
-
-        when(pomidori.getPriceRoznica()).thenReturn(10);
-        when(pomidori.getName()).thenReturn("Помидор Зерсонский");
-
-        when(kapusta.getPriceRoznica()).thenReturn(5);
-        when(kapusta.getName()).thenReturn("Капуста белокаченная");
-
+        System.out.println("Before all called");
         strava = new Strava("Salat cezar", 250);
     }
 
     @BeforeEach
     public void setupEach() {
+        System.out.println("Before each called");
+
+        when(cheese.getPriceRoznica()).thenReturn(50);
+        when(cheese.getName()).thenReturn("Сыр Российский");
+
+        when(pomidori.getPriceRoznica()).thenReturn(10);
+        when(pomidori.getName()).thenReturn("Помидор Херсонский");
+
+        when(kapusta.getPriceRoznica()).thenReturn(5);
+        when(kapusta.getName()).thenReturn("Капуста белокаченная");
+
         Map<Ingredient, Integer> ingredienti = new HashMap<>();
         ingredienti.put(cheese, 20);
         ingredienti.put(pomidori, 100);
@@ -49,6 +49,7 @@ class StravaTest {
     }
 
 
+    // Todo сделать этот тест параметризированым и проверить на граничные значения
     @Test
     void izmenitIngredientIliDobavitNovij() {
         strava.izmenitIngredientIliDobavitNovij(pomidori, 5);
@@ -65,17 +66,19 @@ class StravaTest {
         assertThrows(IllegalArgumentException.class, () -> strava.izmenitIngredientIliDobavitNovij(null, 999));
     }
 
+
     @Test
     void poschitatStoimostDliaKlienta() {
         assertEquals(250, strava.poschitatStoimostDliaKlienta());
         Map<Ingredient, Integer> dopIngredient = new HashMap<>();
         dopIngredient.put(pomidori, 3); // 3 * 10
+        dopIngredient.put(kapusta, 10); // 10 * 5
         strava.setDopolnitelnieIngredienti(dopIngredient);
-        assertEquals(280, strava.poschitatStoimostDliaKlienta());
-        dopIngredient.put(pomidori, -3); // 3 * 10
+        assertEquals(330, strava.poschitatStoimostDliaKlienta());
 
-
-
+//        dopIngredient.put(pomidori, -25); // 3 * 10
+//        System.out.println(strava.poschitatStoimostDliaKlienta());
+        verify(pomidori).getPriceRoznica();
     }
 
     @Test
@@ -94,6 +97,7 @@ class StravaTest {
     void pokazatIngredienti() {
         assertTrue(strava.pokazatIngredienti().containsKey(cheese));
         assertTrue(strava.pokazatIngredienti().containsKey(kapusta));
-        assertTrue(strava.pokazatIngredienti().containsKey(pomidori));
+        assertTrue(strava.pokazatIngredienti().containsKey(pomidori)
+                && strava.pokazatIngredienti().get(pomidori) == 100);
     }
 }

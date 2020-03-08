@@ -13,7 +13,6 @@ public class Zakaz implements Comparable<Zakaz> {
     private Map<Strava, Integer> listStrav = new HashMap<>();
     private int ocenkaPosetitelia;
 
-
     public Zakaz(String nomerZakaza, Posetitel posetitel, Map<Strava, Integer> korzina) {
         this.data = LocalDate.now();
         this.nomerZakaza = nomerZakaza;
@@ -24,7 +23,7 @@ public class Zakaz implements Comparable<Zakaz> {
 
     public int poschitatStoimostZakaza() {
         int[] result = new int[1];
-        listStrav.entrySet().stream().map(entry -> {
+        this.listStrav.entrySet().stream().map(entry -> {
             return entry.getKey().poschitatStoimostDliaKlienta() * entry.getValue();
         }).forEach(item -> result[0] += item);
         return result[0];
