@@ -58,10 +58,10 @@ class DirectorTest {
 
         posetitel1 = new Posetitel("login", "pass");
 
-        maslo = new Ingredient(5, 10).setId("maslo123").setName("Maslo Rastitelnoe");
-        kapusta = new Ingredient(2, 4).setId("kapustaF654").setName("kapusta belokachannaya");
-        pomidori = new Ingredient(3, 5).setId("pomi_FX_087").setName("Pomidor Ukraina");
-        morkovka = new Ingredient(5, 10).setId("1234FFF").setName("morkva garna");
+        maslo = (new Ingredient.Builder()).name("Maslo Rastitelnoe").priceRoznica(10).build();
+        kapusta = (new Ingredient.Builder()).name("kapusta belokachannaya").priceRoznica(4).build();
+        pomidori = (new Ingredient.Builder()).name("Pomidor Ukraina").priceRoznica(5).build();
+        morkovka = (new Ingredient.Builder()).name("morkva garna").priceRoznica(10).build();
 
         salatLeto = new Strava("salat Leto", 10)
                 .izmenitIngredientIliDobavitNovij(maslo, 20)

@@ -16,8 +16,12 @@ public class Strava {
     }
 
     public Strava izmenitIngredientIliDobavitNovij(Ingredient ingredient, int kolichestvo) {
-        ingredienti.put(ingredient, kolichestvo);
-        return this;
+        if(ingredient != null && kolichestvo > 0) {
+            ingredienti.put(ingredient, kolichestvo);
+            return this;
+        }else{
+            throw new IllegalArgumentException("Ingredient cannot be null or kolichastvo < 0");
+        }
     }
 
     private int calculatePrice(Map<Ingredient, Integer> ingredients, Function<Ingredient, Integer> function) {
@@ -37,11 +41,6 @@ public class Strava {
         }
         return price;
     }
-
-    public int poschitatStoimistZakupki() {
-        return calculatePrice(ingredienti, Ingredient::getPriceZakupka);
-    }
-
 
     public Map<Ingredient, Integer> getDopolnitelnieIngredienti() {
         return dopolnitelnieIngredienti;

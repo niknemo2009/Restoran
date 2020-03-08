@@ -11,10 +11,7 @@ public class Main {
         List<Ingredient> result = new ArrayList<>();
         List<List<String>> listFromFile = FilesProcessor.readFileAsList(filename);
         for (List<String> list : listFromFile) {
-            result.add(new Ingredient(Integer.parseInt(list.get(3)), Integer.parseInt(list.get(4)))
-                    .setId(list.get(0))
-                    .setName(list.get(1))
-                    .setEdinicaIzmereniya(EDINICA_IZMERENIYA.valueOf(list.get(2))));
+            result.add((new Ingredient.Builder()).name(list.get(1)).priceRoznica(4).build());
         }
         return result;
     }

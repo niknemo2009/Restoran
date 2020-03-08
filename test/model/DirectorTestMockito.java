@@ -19,7 +19,7 @@ class DirectorTestMockito {
 
     @BeforeAll
     public static void setup() {
-       // restoran = new Restoran("Test Restoran");
+        // restoran = new Restoran("Test Restoran");
         director = new Director("login", "pass");
 
         Povar povar = new Povar("login", "pass");
@@ -28,10 +28,10 @@ class DirectorTestMockito {
 
         Posetitel posetitel1 = new Posetitel("login", "pass");
 
-        Ingredient maslo = new Ingredient(5, 10).setId("maslo123").setName("Maslo Rastitelnoe");
-        Ingredient kapusta = new Ingredient(2, 4).setId("kapustaF654").setName("kapusta belokachannaya");
-        Ingredient pomidori = new Ingredient(3, 5).setId("pomi_FX_087").setName("Pomidor Ukraina");
-        Ingredient morkovka = new Ingredient(5, 10).setId("1234FFF").setName("morkva garna");
+        Ingredient maslo = (new Ingredient.Builder()).name("Maslo Rastitelnoe").priceRoznica(10).build();
+        Ingredient kapusta = (new Ingredient.Builder()).name("kapusta belokachannaya").priceRoznica(4).build();
+        Ingredient pomidori = (new Ingredient.Builder()).name("Pomidor Ukraina").priceRoznica(5).build();
+        Ingredient morkovka = (new Ingredient.Builder()).name("morkva garna").priceRoznica(10).build();
 
         Strava salatLeto = new Strava("salat Leto", 10)
                 .izmenitIngredientIliDobavitNovij(maslo, 20)
@@ -81,8 +81,8 @@ class DirectorTestMockito {
     @Test
     void pokazatVseZakazi() {
 
-       // List<Zakaz>  factResult=director.naitiZakaziZaPeriod(restoran, LocalDate.of(1990,1,1), LocalDate.of(2022,1,1));
-    //assertIterableEquals(factResult,restoran.getZakazi());
+        // List<Zakaz>  factResult=director.naitiZakaziZaPeriod(restoran, LocalDate.of(1990,1,1), LocalDate.of(2022,1,1));
+        //assertIterableEquals(factResult,restoran.getZakazi());
     }
 
     @Test
