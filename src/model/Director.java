@@ -11,6 +11,8 @@ import static org.mockito.Mockito.verify;
 
 public class Director extends Posetitel {
 
+    Restoran restoran;
+
     // Todo решить вопрос разграничения по ресторанам и наследования директора
 
     public List<Zakaz> pokazatVseZakazi2(Restoran restoran) {
