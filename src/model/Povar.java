@@ -7,8 +7,9 @@ import java.util.stream.Collectors;
 public class Povar extends Posetitel{
     Restoran restoran;
 
-    public Povar(String login, String pass) {
+    public Povar(String login, String pass, Restoran restoran) {
         super(login, pass);
+        this.restoran = restoran;
     }
 
     public List<Zakaz> sortirovatZakaziPoStatusu(StatusZakaza statusZakaza){
@@ -26,8 +27,8 @@ public class Povar extends Posetitel{
         return restoran.dobavitStraviVMenu(strava);
     }
 
-    public List<Zakaz> posmotretZakaziSoStatusomRazmeshen(Restoran restoran){
-        return restoran.naitiZakaziPoStatusu(StatusZakaza.RAZMESHEN);
+    public List<Zakaz> posmotretZakaziSoStatusomRazmeshen(){
+        return this.restoran.naitiZakaziPoStatusu(StatusZakaza.RAZMESHEN);
     }
 
     public Povar setRestoran(Restoran restoran) {

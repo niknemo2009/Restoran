@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-public class Strava {
+public class Strava implements Comparable<Strava>{
     private String name;
     private int price;
     private Map<Ingredient, Integer> ingredienti = new HashMap<>();
@@ -75,6 +75,11 @@ public class Strava {
 
     public Map<Ingredient, Integer> pokazatIngredienti() {
         return ingredienti;
+    }
+
+    @Override
+    public int compareTo(Strava strava) {
+        return this.name.compareTo(((Strava) strava).getName());
     }
 
     @Override

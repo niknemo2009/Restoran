@@ -22,7 +22,7 @@ class DirectorTestMockito {
         // restoran = new Restoran("Test Restoran");
         director = new Director("login", "pass");
 
-        Povar povar = new Povar("login", "pass");
+        Povar povar = new Povar("login", "pass", restoran);
         povar.setRestoran(restoran);
         Oficiant oficiant1 = new Oficiant("login", "pass");
 

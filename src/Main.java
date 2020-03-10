@@ -22,7 +22,7 @@ public class Main {
 
         Restoran restoran = new Restoran("Restoranchik");
         Director director = new Director("login", "pass");
-        Povar povar = new Povar("login", "pass");
+        Povar povar = new Povar("login", "pass", restoran);
         povar.setRestoran(restoran);
         Oficiant oficiantVasia = new Oficiant("login", "pass");
         Posetitel posetitel1 = new Posetitel("loginUser", "passUser");

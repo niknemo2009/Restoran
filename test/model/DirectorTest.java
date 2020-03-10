@@ -52,7 +52,7 @@ class DirectorTest {
         restoran = new Restoran("Test Restoran");
         director = new Director("login", "pass");
 
-        povar = new Povar("login", "pass");
+        povar = new Povar("login", "pass", restoran);
         povar.setRestoran(restoran);
         oficiant1 = new Oficiant("login", "pass");
 
