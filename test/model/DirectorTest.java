@@ -5,28 +5,14 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
 import testMaintenanceClasses.IndicativeSentences;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.converter.ConvertWith;
-import org.junit.jupiter.params.provider.ArgumentsSource;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.MethodSource;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static java.time.Duration.ofMillis;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 @DisplayNameGeneration(IndicativeSentences.class)
@@ -38,7 +24,7 @@ class DirectorTest {
     private static Director director;
     private static Povar povar;
     private static Oficiant oficiant1;
-    private static Posetitel posetitel1;
+    private static Klient klient1;
 
     private static Strava salatLeto, salatOsen, ovoshiGril;
     private static Ingredient maslo, kapusta, pomidori, morkovka;
@@ -56,7 +42,7 @@ class DirectorTest {
         povar.setRestoran(restoran);
         oficiant1 = new Oficiant("login", "pass");
 
-        posetitel1 = new Posetitel("login", "pass");
+        klient1 = new Klient("login", "pass");
 
         maslo = (new Ingredient.Builder()).name("Maslo Rastitelnoe").priceRoznica(10).build();
         kapusta = (new Ingredient.Builder()).name("kapusta belokachannaya").priceRoznica(4).build();
@@ -85,17 +71,17 @@ class DirectorTest {
     public void setupInitialDataForEachMethod(){
         restoran.getZakazi().clear();
 
-        posetitel1.dobavitStravuVkorzinu(salatOsen, salatOsen, salatOsen); // Price 60
-        zakaz1 = posetitel1.razmestitZakaz(restoran);
+        klient1.dobavitStravuVkorzinu(salatOsen, salatOsen, salatOsen); // Price 60
+        zakaz1 = klient1.razmestitZakaz(restoran);
 
-        posetitel1.dobavitStravuVkorzinu(salatLeto); // Price 10
-        zakaz2 = posetitel1.razmestitZakaz(restoran);
+        klient1.dobavitStravuVkorzinu(salatLeto); // Price 10
+        zakaz2 = klient1.razmestitZakaz(restoran);
 
-        posetitel1.dobavitStravuVkorzinu(ovoshiGril, salatLeto); // Price 40
-        zakaz3 = posetitel1.razmestitZakaz(restoran);
+        klient1.dobavitStravuVkorzinu(ovoshiGril, salatLeto); // Price 40
+        zakaz3 = klient1.razmestitZakaz(restoran);
 
-        posetitel1.dobavitStravuVkorzinu(salatOsen);
-        zakaz4 = posetitel1.razmestitZakaz(restoran);
+        klient1.dobavitStravuVkorzinu(salatOsen);
+        zakaz4 = klient1.razmestitZakaz(restoran);
         zakaz4.setDate(LocalDate.of(1980, 1, 1));
     }
 
@@ -132,9 +118,9 @@ class DirectorTest {
 
     @Test
     public void test_proveritKachestvoObslugivaniyaPoDate_vivodit_spisok_zakazov_s_ocenkami_za_ukazanniy_period_zakazi_bili_oceneni() {
-        posetitel1.ocenitObslugivanie(zakaz1, 5);
-        posetitel1.ocenitObslugivanie(zakaz2, 4);
-        posetitel1.ocenitObslugivanie(zakaz3, 3);
+        klient1.ocenitObslugivanie(zakaz1, 5);
+        klient1.ocenitObslugivanie(zakaz2, 4);
+        klient1.ocenitObslugivanie(zakaz3, 3);
         Map<Zakaz, Integer> result = director.proveritKachestvoObslugivaniyaPoDate(restoran, from, to);
         Map<Zakaz, Integer> expected = new TreeMap<>();
         expected.put(zakaz1, 5);
@@ -159,7 +145,7 @@ class DirectorTest {
 
     @Test
     public void test_skolkoZarabotanoZaPeriod_dolgen_poschitat_dopolnitelnie_ingredienti(){
-        Zakaz zakazTMP = zakazSDopIngredientami(posetitel1);
+        Zakaz zakazTMP = zakazSDopIngredientami(klient1);
         int result = director.skolkoZarabotanoZaPeriod(restoran, from, to);
         // итого должно выйти доп ингредиентов 500 + 2000 + предыдуцие заказы 110 + заказ из ф-ии  3*30
         assertEquals(500+2000+110+90, result);
@@ -167,7 +153,7 @@ class DirectorTest {
 
 
 
-    public Zakaz zakazSDopIngredientami(Posetitel podopitnij){
+    public Zakaz zakazSDopIngredientami(Klient podopitnij){
         Map<Ingredient, Integer> dopIngredientiVStravu = new HashMap<>();
         dopIngredientiVStravu.put(pomidori, 100); // 50 * 100 = 500
         dopIngredientiVStravu.put(morkovka, 200); // 10 *200 = 2000 цены кошмар конечно
@@ -213,7 +199,7 @@ class DirectorTest {
     
     @Test
     public void test_dobavitDopIngredienti_dolgen_vernut_nuviju_kopiyu_Stravi(){
-        Posetitel podopitnij = new Posetitel("login", "pass");
+        Klient podopitnij = new Klient("login", "pass");
         Map<Ingredient, Integer> dopIngredientiVStravu = new HashMap<>();
         dopIngredientiVStravu.put(pomidori, 100); // 50 * 100 = 500
         dopIngredientiVStravu.put(morkovka, 200); // 10 *200 = 2000 цены кошмар конечно

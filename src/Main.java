@@ -25,7 +25,7 @@ public class Main {
         Povar povar = new Povar("login", "pass", restoran);
         povar.setRestoran(restoran);
         Oficiant oficiantVasia = new Oficiant("login", "pass");
-        Posetitel posetitel1 = new Posetitel("loginUser", "passUser");
+        Klient klient1 = new Klient("loginUser", "passUser");
         List<Strava> strava1 = new ArrayList<>();
 
         List<Ingredient> ingredienti = dobavitIngredientiIzFaila("src/resources/ingredienti");
@@ -40,16 +40,16 @@ public class Main {
 
         restoran.dobavitStraviVMenu(salatCesar, salatLeto);
 
-        posetitel1.posmotretMenu(restoran);
+        klient1.posmotretMenu(restoran);
 
         strava1 = restoran.naitiStraviPoImeni("Салат");
         System.out.println(strava1);
 
-        posetitel1.dobavitStravuVkorzinu(strava1.get(0), strava1.get(1));
+        klient1.dobavitStravuVkorzinu(strava1.get(0), strava1.get(1));
 
-        Zakaz zakaz = posetitel1.razmestitZakaz(restoran);
+        Zakaz zakaz = klient1.razmestitZakaz(restoran);
         System.out.println("первое размещение заказа posetitel1.razmestitZakaz " + zakaz);
-        posetitel1.dobavitStravuVZakaz(zakaz, strava1.get(0));
+        klient1.dobavitStravuVZakaz(zakaz, strava1.get(0));
         System.out.println(" Заказ после добавления стравы в заказ посетителем" + zakaz);
 
         zakaz.dobavitStravuVZakaz(strava1.get(0));

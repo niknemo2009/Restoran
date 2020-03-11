@@ -3,11 +3,9 @@ package model;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.DirectoryStream;
 import java.time.LocalDate;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -26,7 +24,7 @@ class DirectorTestMockito {
         povar.setRestoran(restoran);
         Oficiant oficiant1 = new Oficiant("login", "pass");
 
-        Posetitel posetitel1 = new Posetitel("login", "pass");
+        Klient klient1 = new Klient("login", "pass");
 
         Ingredient maslo = (new Ingredient.Builder()).name("Maslo Rastitelnoe").priceRoznica(10).build();
         Ingredient kapusta = (new Ingredient.Builder()).name("kapusta belokachannaya").priceRoznica(4).build();
@@ -50,17 +48,17 @@ class DirectorTestMockito {
         povar.dobavitStravuVMenu(salatOsen);
         povar.dobavitStravuVMenu(ovoshiGril);
 
-        posetitel1.dobavitStravuVkorzinu(salatOsen, salatOsen, salatOsen); // Price 60
-        Zakaz zakaz1 = posetitel1.razmestitZakaz(restoran);
+        klient1.dobavitStravuVkorzinu(salatOsen, salatOsen, salatOsen); // Price 60
+        Zakaz zakaz1 = klient1.razmestitZakaz(restoran);
 
-        posetitel1.dobavitStravuVkorzinu(salatLeto); // Price 10
-        Zakaz zakaz2 = posetitel1.razmestitZakaz(restoran);
+        klient1.dobavitStravuVkorzinu(salatLeto); // Price 10
+        Zakaz zakaz2 = klient1.razmestitZakaz(restoran);
 
-        posetitel1.dobavitStravuVkorzinu(ovoshiGril, salatLeto); // Price 40
-        Zakaz zakaz3 = posetitel1.razmestitZakaz(restoran);
+        klient1.dobavitStravuVkorzinu(ovoshiGril, salatLeto); // Price 40
+        Zakaz zakaz3 = klient1.razmestitZakaz(restoran);
 
-        posetitel1.dobavitStravuVkorzinu(salatOsen);
-        Zakaz zakaz4 = posetitel1.razmestitZakaz(restoran);
+        klient1.dobavitStravuVkorzinu(salatOsen);
+        Zakaz zakaz4 = klient1.razmestitZakaz(restoran);
         zakaz4.setDate(LocalDate.of(1980, 1, 1));
 
         vseZakazi = Arrays.asList(zakaz1, zakaz2, zakaz3, zakaz4);

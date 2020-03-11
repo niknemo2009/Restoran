@@ -3,9 +3,9 @@ package model;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Restoran {
+public class Restoran implements IRestoran{
     private String name;
-    private List<Posetitel> worker = new ArrayList<>();
+    private List<Klient> worker = new ArrayList<>();
     private Set<Strava> menu = new HashSet<>();
     private List<Zakaz> zakazi = new ArrayList<>();
 
@@ -19,7 +19,7 @@ public class Restoran {
                 .collect(Collectors.toList());
     }
 
-    public Set<Strava> dobavitStraviVMenu(Strava... strava) {
+    public Set<Strava> dobavitStraviVMenu(Povar povar, Strava... strava) {
         this.menu.addAll(Arrays.asList(strava));
         return this.menu;
     }
@@ -29,11 +29,11 @@ public class Restoran {
         return zakaz;
     }
 
-    public List<Zakaz> naitiZakaziPoPolzovatelu(Posetitel posetitel){
-        return zakazi.stream().filter(zakaz -> zakaz.getPosetitel().equals(posetitel)).collect(Collectors.toList());
+    public List<Zakaz> naitiZakaziPoPolzovatelu(Klient klient){
+        return zakazi.stream().filter(zakaz -> zakaz.getKlient().equals(klient)).collect(Collectors.toList());
     }
 
-    public List<Zakaz> naitiZakaziPoStatusu(StatusZakaza statusZakaza){
+    public List<Zakaz> naitiZakaziPoStatusu(Worker worker, StatusZakaza statusZakaza){
         return zakazi.stream().filter(zakaz->zakaz.getStatus().equals(statusZakaza)).collect(Collectors.toList());
     }
 
@@ -52,7 +52,7 @@ public class Restoran {
         return zakazi;
     }
 
-    public List<Zakaz> getZakazi(Posetitel worker) {
+    public List<Zakaz> getZakazi(Klient worker) {
         if(worker instanceof Director)
             return zakazi;
         else {

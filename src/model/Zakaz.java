@@ -7,16 +7,16 @@ import java.util.Map;
 public class Zakaz implements Comparable<Zakaz> {
     private LocalDate data;
     private String nomerZakaza;
-    private Posetitel posetitel;
+    private Klient klient;
     private Oficiant oficiant;
     private StatusZakaza status;
     private Map<Strava, Integer> listStrav = new HashMap<>();
     private int ocenkaPosetitelia;
 
-    public Zakaz(String nomerZakaza, Posetitel posetitel, Map<Strava, Integer> korzina) {
+    public Zakaz(String nomerZakaza, Klient klient, Map<Strava, Integer> korzina) {
         this.data = LocalDate.now();
         this.nomerZakaza = nomerZakaza;
-        this.posetitel = posetitel;
+        this.klient = klient;
         this.status = StatusZakaza.RAZMESHEN;
         korzina.forEach((s, i) -> listStrav.put(s, i));
     }
@@ -62,8 +62,8 @@ public class Zakaz implements Comparable<Zakaz> {
         return nomerZakaza;
     }
 
-    public Posetitel getPosetitel() {
-        return posetitel;
+    public Klient getKlient() {
+        return klient;
     }
 
     public Oficiant getOficiant() {

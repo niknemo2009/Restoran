@@ -8,8 +8,8 @@ class MainTest {
     static Povar povar;
      static Oficiant oficiant1;
     static Oficiant oficiant2;
-    static Posetitel posetitel1;
-    static Posetitel posetitel2;
+    static Klient klient1;
+    static Klient klient2;
 
 
     @BeforeAll

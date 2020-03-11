@@ -3,13 +3,12 @@ package model;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.function.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class Director extends Posetitel {
+public class Director extends Klient {
 
     Restoran restoran;
 

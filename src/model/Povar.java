@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Povar extends Posetitel{
+public class Povar extends Klient {
     Restoran restoran;
 
     public Povar(String login, String pass, Restoran restoran) {

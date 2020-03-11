@@ -21,7 +21,7 @@ class ZakazTest {
 //    private Ingredient ingredient = Mockito.mock(Ingredient.class);
 //    private Strava salatLeto = Mockito.mock(Strava.class);
     @Mock
-    private Posetitel posetitel;
+    private Klient klient;
     @Mock
     private Ingredient ingredient;
     @Mock
@@ -45,9 +45,9 @@ class ZakazTest {
         when(salatLeto.getPrice()).thenReturn(50);
         when(salatLeto.poschitatStoimostDliaKlienta()).thenReturn(50);
         when(salatLeto.getDopolnitelnieIngredienti()).thenReturn(new HashMap<>());
-        when(posetitel.getKorzina()).thenReturn(korzina);
+        when(klient.getKorzina()).thenReturn(korzina);
 
-        zakaz = new Zakaz("777", posetitel, posetitel.getKorzina());
+        zakaz = new Zakaz("777", klient, klient.getKorzina());
     }
 
     @Test
