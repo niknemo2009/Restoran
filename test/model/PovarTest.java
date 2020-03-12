@@ -31,7 +31,7 @@ class PovarTest {
         zakaz2 = unitTestContext.zakaz2;
         zakaz3 = unitTestContext.zakaz3;
 
-        povar = new Povar("povar", "pass", restoran);
+        povar = new Povar("povar", "pass");
 
         zakaziList.add(zakaz1);
         zakaziList.add(zakaz2);
@@ -44,9 +44,10 @@ class PovarTest {
     @Test
     void sortirovatZakaziPoStatusu() {
         assertAll(
-                ()->povar.sortirovatZakaziPoStatusu(StatusZakaza.RAZMESHEN).contains(zakaz1),
-                ()->povar.sortirovatZakaziPoStatusu(StatusZakaza.VIPOLNIAETSIA).contains(zakaz2),
-                ()->povar.sortirovatZakaziPoStatusu(StatusZakaza.VIPOLNEN).contains(zakaz3)
+
+                ()->povar.pokazatZakaziPoStatusu(restoran, StatusZakaza.RAZMESHEN).contains(zakaz1),
+                ()->povar.pokazatZakaziPoStatusu(restoran, StatusZakaza.VIPOLNIAETSIA).contains(zakaz2),
+                ()->povar.pokazatZakaziPoStatusu(restoran, StatusZakaza.VIPOLNEN).contains(zakaz3)
         );
 
     }

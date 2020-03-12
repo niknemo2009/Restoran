@@ -6,16 +6,21 @@ import java.util.Set;
 public interface IRestoran {
 
     public List<Strava> naitiStraviPoImeni(String name);
-    public Set<Strava> dobavitStraviVMenu(Povar povar, Strava... strava);
     public Zakaz dobavitZakaz(Zakaz zakaz);
+
+    public Set<Strava> dobavitStraviVMenu(Worker povar, Strava... strava);
+
     public List<Zakaz> naitiZakaziPoPolzovatelu(Klient klient);
+
     public List<Zakaz> naitiZakaziPoStatusu(Worker worker, StatusZakaza statusZakaza);
 
     public Set<Strava> getMenu();
 
-    public List<Zakaz> getZakazi();
-
-    public List<Zakaz> getZakazi(Klient klient);
+    public List<Zakaz> getZakazi(Worker worker);
 
     public String getName();
+
+    public int getNomerPoslednegoZakaza();
+
+
 }

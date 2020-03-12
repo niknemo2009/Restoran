@@ -20,9 +20,8 @@ class DirectorTestMockito {
         // restoran = new Restoran("Test Restoran");
         director = new Director("login", "pass");
 
-        Povar povar = new Povar("login", "pass", restoran);
-        povar.setRestoran(restoran);
-        Oficiant oficiant1 = new Oficiant("login", "pass");
+        Povar povar = new Povar("login", "pass");
+         Oficiant oficiant1 = new Oficiant("login", "pass");
 
         Klient klient1 = new Klient("login", "pass");
 
@@ -44,20 +43,20 @@ class DirectorTestMockito {
                 .izmenitIngredientIliDobavitNovij(kapusta, 40)
                 .izmenitIngredientIliDobavitNovij(morkovka, 30);
 
-        povar.dobavitStravuVMenu(salatLeto);
-        povar.dobavitStravuVMenu(salatOsen);
-        povar.dobavitStravuVMenu(ovoshiGril);
+        povar.dobavitStravuVMenu(restoran, salatLeto);
+        povar.dobavitStravuVMenu(restoran, salatOsen);
+        povar.dobavitStravuVMenu(restoran, ovoshiGril);
 
-        klient1.dobavitStravuVkorzinu(salatOsen, salatOsen, salatOsen); // Price 60
+        klient1.dobavitStravuVkorzinu(restoran, salatOsen, salatOsen, salatOsen); // Price 60
         Zakaz zakaz1 = klient1.razmestitZakaz(restoran);
 
-        klient1.dobavitStravuVkorzinu(salatLeto); // Price 10
+        klient1.dobavitStravuVkorzinu(restoran, salatLeto); // Price 10
         Zakaz zakaz2 = klient1.razmestitZakaz(restoran);
 
-        klient1.dobavitStravuVkorzinu(ovoshiGril, salatLeto); // Price 40
+        klient1.dobavitStravuVkorzinu(restoran, ovoshiGril, salatLeto); // Price 40
         Zakaz zakaz3 = klient1.razmestitZakaz(restoran);
 
-        klient1.dobavitStravuVkorzinu(salatOsen);
+        klient1.dobavitStravuVkorzinu(restoran, salatOsen);
         Zakaz zakaz4 = klient1.razmestitZakaz(restoran);
         zakaz4.setDate(LocalDate.of(1980, 1, 1));
 
@@ -69,7 +68,7 @@ class DirectorTestMockito {
 
         Set<Strava> menu = new HashSet<>();
         menu.add(ovoshiGril);
-        when(restoran.dobavitStraviVMenu(ovoshiGril)).thenReturn(menu);
+        when(restoran.dobavitStraviVMenu(povar, ovoshiGril)).thenReturn(menu);
         List<Strava> naidennieStravi = new ArrayList<>();
         naidennieStravi.add(ovoshiGril);
         when(restoran.naitiStraviPoImeni("Ovoshi Gril")).thenReturn(naidennieStravi);

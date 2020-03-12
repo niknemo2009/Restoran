@@ -2,16 +2,17 @@ package model;
 
 import java.util.*;
 
-public class Klient {
+public class Klient implements Posetitel{
     private String login, pass;
-    private Map<Strava, Integer> korzina = new HashMap<>();
+//    private Map<Strava, Integer> korzina = new HashMap<>();
+    private Map<IRestoran, Map<Strava, Integer>> korzina = new HashMap<>();
 
     public Klient(String login, String pass) {
         this.login = login;
         this.pass = pass;
     }
 
-    public List<Zakaz> posmotretSvoiZakazi(Restoran restoran) {
+    public List<Zakaz> posmotretSvoiZakazi(IRestoran restoran) {
         return restoran.naitiZakaziPoPolzovatelu(this);
     }
 
@@ -32,9 +33,9 @@ public class Klient {
         return result;
     }
 
-    public Zakaz razmestitZakaz(Restoran restoran) throws UnsupportedOperationException {
+    public Zakaz razmestitZakaz(IRestoran restoran) throws UnsupportedOperationException {
         if (this.korzina != null && this.korzina.size() > 0) {
-            Zakaz result = new Zakaz(String.valueOf(restoran.getZakazi().size() + 1), this, korzina);
+            Zakaz result = new Zakaz(String.valueOf(restoran.getNomerPoslednegoZakaza() +1), this, korzina.get(restoran));
             result = restoran.dobavitZakaz(result);
             korzina.clear();
             return result;
@@ -43,15 +44,15 @@ public class Klient {
         }
     }
 
-    public Map<Strava, Integer> dobavitStravuVkorzinu(Strava... strava) {
+    public Map<Strava, Integer> dobavitStravuVkorzinu(IRestoran restoran, Strava... strava) {
         for (Strava s : strava) {
-            if (korzina.containsKey(s)) {
-                korzina.put(s, korzina.get(s) + 1);
+            if (korzina.get(restoran).containsKey(s)) {
+                korzina.get(restoran).put(s, korzina.get(restoran).get(s) + 1);
             } else {
-                korzina.put(s, 1);
+                korzina.get(restoran).put(s, 1);
             }
         }
-        return korzina;
+        return korzina.get(restoran);
     }
 
     public Zakaz dobavitStravuVZakaz(Zakaz currentZakaz, Strava... stravai) {
@@ -59,11 +60,11 @@ public class Klient {
         return currentZakaz;
     }
 
-    public Set<Strava> posmotretMenu(Restoran restoran) {
+    public Set<Strava> posmotretMenu(IRestoran restoran) {
         return restoran.getMenu();
     }
 
-    public Map<Strava, Integer> getKorzina() {
-        return korzina;
+    public Map<Strava, Integer> getKorzina(IRestoran restoran) {
+        return korzina.get(restoran);
     }
 }

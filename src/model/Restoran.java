@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class Restoran implements IRestoran{
     private String name;
-    private List<Klient> worker = new ArrayList<>();
+    private List<Klient> workers = new ArrayList<>();
     private Set<Strava> menu = new HashSet<>();
     private List<Zakaz> zakazi = new ArrayList<>();
 
@@ -19,9 +19,13 @@ public class Restoran implements IRestoran{
                 .collect(Collectors.toList());
     }
 
-    public Set<Strava> dobavitStraviVMenu(Povar povar, Strava... strava) {
-        this.menu.addAll(Arrays.asList(strava));
-        return this.menu;
+    public Set<Strava> dobavitStraviVMenu(Worker povar, Strava... strava) {
+        if(this.workers.contains(povar) && povar instanceof Povar) {
+            this.menu.addAll(Arrays.asList(strava));
+            return this.menu;
+        }else{
+            throw new UnsupportedOperationException("Заказы могут добавлять только повара");
+        }
     }
 
     public Zakaz dobavitZakaz(Zakaz zakaz) {
@@ -35,6 +39,10 @@ public class Restoran implements IRestoran{
 
     public List<Zakaz> naitiZakaziPoStatusu(Worker worker, StatusZakaza statusZakaza){
         return zakazi.stream().filter(zakaz->zakaz.getStatus().equals(statusZakaza)).collect(Collectors.toList());
+    }
+
+    public int getNomerPoslednegoZakaza(){
+        return this.zakazi.size()+1;
     }
 
 
@@ -52,7 +60,7 @@ public class Restoran implements IRestoran{
         return zakazi;
     }
 
-    public List<Zakaz> getZakazi(Klient worker) {
+    public List<Zakaz> getZakazi(Worker worker) {
         if(worker instanceof Director)
             return zakazi;
         else {

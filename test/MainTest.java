@@ -16,7 +16,7 @@ class MainTest {
     public static void setup() {
         restoran = new Restoran("Restoran 1");
         director = new Director("login", "pass");
-        povar = new Povar("login", "pass", restoran);
+        povar = new Povar("login", "pass");
  //        oficiant1 = new Oficiant();
 //        oficiant2 = new Oficiant();
 //        posetitel1 = new Posetitel(restoran, oficiant1);

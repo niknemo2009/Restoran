@@ -38,8 +38,7 @@ class DirectorTest {
         restoran = new Restoran("Test Restoran");
         director = new Director("login", "pass");
 
-        povar = new Povar("login", "pass", restoran);
-        povar.setRestoran(restoran);
+        povar = new Povar("login", "pass");
         oficiant1 = new Oficiant("login", "pass");
 
         klient1 = new Klient("login", "pass");
@@ -62,25 +61,25 @@ class DirectorTest {
                 .izmenitIngredientIliDobavitNovij(kapusta, 40)
                 .izmenitIngredientIliDobavitNovij(morkovka, 30);
 
-        povar.dobavitStravuVMenu(salatLeto);
-        povar.dobavitStravuVMenu(salatOsen);
-        povar.dobavitStravuVMenu(ovoshiGril);
+        povar.dobavitStravuVMenu(restoran, salatLeto);
+        povar.dobavitStravuVMenu(restoran, salatOsen);
+        povar.dobavitStravuVMenu(restoran, ovoshiGril);
     }
 
     @BeforeEach
     public void setupInitialDataForEachMethod(){
         restoran.getZakazi().clear();
 
-        klient1.dobavitStravuVkorzinu(salatOsen, salatOsen, salatOsen); // Price 60
+        klient1.dobavitStravuVkorzinu(restoran, salatOsen, salatOsen, salatOsen); // Price 60
         zakaz1 = klient1.razmestitZakaz(restoran);
 
-        klient1.dobavitStravuVkorzinu(salatLeto); // Price 10
+        klient1.dobavitStravuVkorzinu(restoran, salatLeto); // Price 10
         zakaz2 = klient1.razmestitZakaz(restoran);
 
-        klient1.dobavitStravuVkorzinu(ovoshiGril, salatLeto); // Price 40
+        klient1.dobavitStravuVkorzinu(restoran, ovoshiGril, salatLeto); // Price 40
         zakaz3 = klient1.razmestitZakaz(restoran);
 
-        klient1.dobavitStravuVkorzinu(salatOsen);
+        klient1.dobavitStravuVkorzinu(restoran, salatOsen);
         zakaz4 = klient1.razmestitZakaz(restoran);
         zakaz4.setDate(LocalDate.of(1980, 1, 1));
     }
@@ -153,14 +152,14 @@ class DirectorTest {
 
 
 
-    public Zakaz zakazSDopIngredientami(Klient podopitnij){
+    public Zakaz zakazSDopIngredientami(Posetitel podopitnij){
         Map<Ingredient, Integer> dopIngredientiVStravu = new HashMap<>();
         dopIngredientiVStravu.put(pomidori, 100); // 50 * 100 = 500
         dopIngredientiVStravu.put(morkovka, 200); // 10 *200 = 2000 цены кошмар конечно
         // всего заказов продано ранее на 110 + заказ на 30 + доп ингредиенты
-        podopitnij.dobavitStravuVkorzinu(podopitnij.dobavitDopIngredienti(ovoshiGril, dopIngredientiVStravu));
+        podopitnij.dobavitStravuVkorzinu(restoran, podopitnij.dobavitDopIngredienti(ovoshiGril, dopIngredientiVStravu));
         // добавили еще 2 блюда на 60 в сумме
-        podopitnij.dobavitStravuVkorzinu(ovoshiGril, ovoshiGril);
+        podopitnij.dobavitStravuVkorzinu(restoran, ovoshiGril, ovoshiGril);
         return podopitnij.razmestitZakaz(restoran);
     }
 
@@ -178,34 +177,6 @@ class DirectorTest {
                 ()->assertTrue(result.contains(ovoshiGril))
         );
         System.out.println(result);
-    }
-
-    @Test
-    public void test_posmotretSvoiZakazi_dolgen_vernut_pustoi_spisok(){
-        assertTrue(director.posmotretSvoiZakazi(restoran).isEmpty());
-    }
-
-    @Test
-    public void test_posmotretSvoiZakazi_dolgen_naiti_zakaz_Directora(){
-        Zakaz zakazTest = zakazSDopIngredientami(director);
-        assertTrue(director.pokazatVseZakazi(restoran).contains(zakazTest));
-    }
-
-    @Test
-    public void test_ocenitObslugivanie_dolgen_vibrosit_iskluchenie_UnsupportedOperationException(){
-        // В этом тесте проверяем, может ли директор оценить заказ клиента используя функционал клиента
-        assertThrows(UnsupportedOperationException.class, ()->director.ocenitObslugivanie(zakaz1, 4));
-    }
-    
-    @Test
-    public void test_dobavitDopIngredienti_dolgen_vernut_nuviju_kopiyu_Stravi(){
-        Klient podopitnij = new Klient("login", "pass");
-        Map<Ingredient, Integer> dopIngredientiVStravu = new HashMap<>();
-        dopIngredientiVStravu.put(pomidori, 100); // 50 * 100 = 500
-        dopIngredientiVStravu.put(morkovka, 200); // 10 *200 = 2000 цены кошмар конечно
-        podopitnij.dobavitDopIngredienti(ovoshiGril, dopIngredientiVStravu);
-        // добавили еще 2 блюда на 60 в сумме
-        podopitnij.dobavitStravuVkorzinu(ovoshiGril, ovoshiGril);
     }
 
     
