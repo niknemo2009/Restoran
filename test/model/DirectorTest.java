@@ -95,7 +95,7 @@ class DirectorTest {
         zakaz2 = restoran.findZakazByNumber(zakazID2, posetitel1).get(0);
 
         posetitel1.dobavitStravuVkorzinu(ovoshiGril, salatLeto); // Price 40
-        String zakazID3 = posetitel1.razmestitZakaz(restoran);
+        String zakazID3 = posetitel1.razmestitZakaz(restoran); было бы логичней чтобы этот метод создавал заказ и возвращал его , тогда отпла бы необходимость в вызове финда ниже
         zakaz3 = restoran.findZakazByNumber(zakazID3, posetitel1).get(0);
 
         posetitel1.dobavitStravuVkorzinu(salatOsen);
@@ -145,12 +145,12 @@ class DirectorTest {
         expected.put(zakaz1, 5);
         expected.put(zakaz2, 4);
         expected.put(zakaz3, 3);
-        assertEquals(expected, result);
+        assertEquals(expected, result);//не уверен что єто вернй assert 
     }
 
 
     @Test
-    public void test_naitiZakaziZaPeriod_dolgen_naiti_zakaz4() {
+    public void test_naitiZakaziZaPeriod_dolgen_naiti_zakaz4() { //вы не проверяете , что в выборку не попали левые заказы 
         assertEquals(zakaz4, director
                 .naitiZakaziZaPeriod(restoran, LocalDate.of(1979, 1, 1), LocalDate.of(1981, 1, 1))
                 .get(0));
@@ -189,10 +189,10 @@ class DirectorTest {
      * */
 
     @Test
-    public void test_Posmotret_menu_dolgen_sodergat_3_Stravi(){
-        Set<Strava> result = director.posmotretMenu(restoran);
+    public void test_Posmotret_menu_dolgen_sodergat_3_Stravi(){// !!! Какие есть еще варианты для проверки содержимого коллекции
+        Set<Strava> result = director.posmotretMenu(restoran);  
         assertAll(
-                ()->assertTrue(result.contains(salatLeto)),
+                ()->assertTrue(result.contains(salatLeto)), // в таком виде мы проверяем присутствие нужного, но не отсутствие лишнего
                 ()->assertTrue(result.contains(salatOsen)),
                 ()->assertTrue(result.contains(ovoshiGril))
         );
@@ -205,7 +205,7 @@ class DirectorTest {
     }
 
     @Test
-    public void test_posmotretSvoiZakazi_dolgen_naiti_zakaz_Directora(){
+    public void test_posmotretSvoiZakazi_dolgen_naiti_zakaz_Directora(){//уточните- что проверяет этот тест
         Zakaz zakazTest = zakazSDopIngredientami(director);
         assertTrue(director.pokazatVseZakazi(restoran).contains(zakazTest));
     }
@@ -217,7 +217,7 @@ class DirectorTest {
     }
     
     @Test
-    public void test_dobavitDopIngredienti_dolgen_vernut_nuviju_kopiyu_Stravi(){
+    public void test_dobavitDopIngredienti_dolgen_vernut_nuviju_kopiyu_Stravi(){ //Что является результатом работы метода- это влияет на сценарий теста
         Posetitel podopitnij = new Posetitel("login", "pass");
         Map<Ingredient, Integer> dopIngredientiVStravu = new HashMap<>();
         dopIngredientiVStravu.put(pomidori, 100); // 50 * 100 = 500
