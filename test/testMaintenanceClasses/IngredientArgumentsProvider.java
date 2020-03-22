@@ -12,6 +12,7 @@ public class IngredientArgumentsProvider {
 
 
     public static Stream<Arguments> smallerIngredients() {
+
         List<Ingredient> ingredientList = Arrays.asList(
                 (new Ingredient.Builder().name("rСыр тертый").build()),
                 (new Ingredient.Builder().name("TСыр тертый").build()),

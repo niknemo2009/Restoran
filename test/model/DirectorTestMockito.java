@@ -51,16 +51,21 @@ class DirectorTestMockito {
         povar.dobavitStravuVMenu(ovoshiGril);
 
         posetitel1.dobavitStravuVkorzinu(salatOsen, salatOsen, salatOsen); // Price 60
-        Zakaz zakaz1 = posetitel1.razmestitZakaz(restoran);
+        String zakazID1 = posetitel1.razmestitZakaz(restoran);
+        Zakaz zakaz1 = restoran.findZakazByNumber(zakazID1, posetitel1).get(0);
+
 
         posetitel1.dobavitStravuVkorzinu(salatLeto); // Price 10
-        Zakaz zakaz2 = posetitel1.razmestitZakaz(restoran);
+        String zakazID2 = posetitel1.razmestitZakaz(restoran);
+        Zakaz zakaz2 = restoran.findZakazByNumber(zakazID2, posetitel1).get(0);
 
         posetitel1.dobavitStravuVkorzinu(ovoshiGril, salatLeto); // Price 40
-        Zakaz zakaz3 = posetitel1.razmestitZakaz(restoran);
+        String zakazID3 = posetitel1.razmestitZakaz(restoran);
+        Zakaz zakaz3 = restoran.findZakazByNumber(zakazID3, posetitel1).get(0);
 
         posetitel1.dobavitStravuVkorzinu(salatOsen);
-        Zakaz zakaz4 = posetitel1.razmestitZakaz(restoran);
+        String zakazID14 = posetitel1.razmestitZakaz(restoran);
+        Zakaz zakaz4 = restoran.findZakazByNumber(zakazID14, posetitel1).get(0);
         zakaz4.setDate(LocalDate.of(1980, 1, 1));
 
         vseZakazi = Arrays.asList(zakaz1, zakaz2, zakaz3, zakaz4);

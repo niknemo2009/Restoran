@@ -24,9 +24,8 @@ public class Restoran {
         return this.menu;
     }
 
-    public Zakaz dobavitZakaz(Zakaz zakaz) {
-        this.zakazi.add(zakaz);
-        return zakaz;
+    public boolean dobavitZakaz(Zakaz zakaz) {
+        return this.zakazi.add(zakaz);
     }
 
     public List<Zakaz> naitiZakaziPoPolzovatelu(Posetitel posetitel){
@@ -66,4 +65,10 @@ public class Restoran {
     }
 
 
+    public List<Zakaz> findZakazByNumber(String numZakaz, Posetitel posetitel) {
+        return naitiZakaziPoPolzovatelu(posetitel)
+                .stream()
+                .filter(zakaz -> zakaz.getNomerZakaza().equals(numZakaz))
+                .collect(Collectors.toList());
+    }
 }

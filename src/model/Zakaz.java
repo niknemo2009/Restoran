@@ -13,12 +13,13 @@ public class Zakaz implements Comparable<Zakaz> {
     private Map<Strava, Integer> listStrav = new HashMap<>();
     private int ocenkaPosetitelia;
 
-    public Zakaz(String nomerZakaza, Posetitel posetitel, Map<Strava, Integer> korzina) {
+    public Zakaz(Restoran restoran, Posetitel posetitel, Map<Strava, Integer> korzina) {
         this.data = LocalDate.now();
-        this.nomerZakaza = nomerZakaza;
+        this.nomerZakaza = String.valueOf(restoran.getZakazi().size() + 1);
         this.posetitel = posetitel;
         this.status = StatusZakaza.RAZMESHEN;
         korzina.forEach((s, i) -> listStrav.put(s, i));
+        korzina.clear();
     }
 
     public int poschitatStoimostZakaza() {

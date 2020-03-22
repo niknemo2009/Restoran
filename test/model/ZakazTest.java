@@ -26,6 +26,8 @@ class ZakazTest {
     private Ingredient ingredient;
     @Mock
     private Strava salatLeto;
+    @Mock
+    private Restoran restoran;
     private Map<Strava, Integer> korzina;
 
     {
@@ -47,7 +49,7 @@ class ZakazTest {
         when(salatLeto.getDopolnitelnieIngredienti()).thenReturn(new HashMap<>());
         when(posetitel.getKorzina()).thenReturn(korzina);
 
-        zakaz = new Zakaz("777", posetitel, posetitel.getKorzina());
+        zakaz = new Zakaz(restoran, posetitel, posetitel.getKorzina());
     }
 
     @Test

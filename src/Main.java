@@ -47,7 +47,8 @@ public class Main {
 
         posetitel1.dobavitStravuVkorzinu(strava1.get(0), strava1.get(1));
 
-        Zakaz zakaz = posetitel1.razmestitZakaz(restoran);
+        String nomerZakaza = posetitel1.razmestitZakaz(restoran);
+        Zakaz zakaz = restoran.findZakazByNumber(nomerZakaza, posetitel1).get(0);
         System.out.println("первое размещение заказа posetitel1.razmestitZakaz " + zakaz);
         posetitel1.dobavitStravuVZakaz(zakaz, strava1.get(0));
         System.out.println(" Заказ после добавления стравы в заказ посетителем" + zakaz);

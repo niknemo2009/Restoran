@@ -86,16 +86,21 @@ class DirectorTest {
         restoran.getZakazi().clear();
 
         posetitel1.dobavitStravuVkorzinu(salatOsen, salatOsen, salatOsen); // Price 60
-        zakaz1 = posetitel1.razmestitZakaz(restoran);
+        String zakazID1 = posetitel1.razmestitZakaz(restoran);
+        zakaz1 = restoran.findZakazByNumber(zakazID1, posetitel1).get(0);
+
 
         posetitel1.dobavitStravuVkorzinu(salatLeto); // Price 10
-        zakaz2 = posetitel1.razmestitZakaz(restoran);
+        String zakazID2 = posetitel1.razmestitZakaz(restoran);
+        zakaz2 = restoran.findZakazByNumber(zakazID2, posetitel1).get(0);
 
         posetitel1.dobavitStravuVkorzinu(ovoshiGril, salatLeto); // Price 40
-        zakaz3 = posetitel1.razmestitZakaz(restoran);
+        String zakazID3 = posetitel1.razmestitZakaz(restoran);
+        zakaz3 = restoran.findZakazByNumber(zakazID3, posetitel1).get(0);
 
         posetitel1.dobavitStravuVkorzinu(salatOsen);
-        zakaz4 = posetitel1.razmestitZakaz(restoran);
+        String zakazID14 = posetitel1.razmestitZakaz(restoran);
+        zakaz4 = restoran.findZakazByNumber(zakazID14, posetitel1).get(0);
         zakaz4.setDate(LocalDate.of(1980, 1, 1));
     }
 
@@ -175,7 +180,7 @@ class DirectorTest {
         podopitnij.dobavitStravuVkorzinu(podopitnij.dobavitDopIngredienti(ovoshiGril, dopIngredientiVStravu));
         // добавили еще 2 блюда на 60 в сумме
         podopitnij.dobavitStravuVkorzinu(ovoshiGril, ovoshiGril);
-        return podopitnij.razmestitZakaz(restoran);
+        return restoran.findZakazByNumber(podopitnij.razmestitZakaz(restoran), podopitnij).get(0);
     }
 
 
