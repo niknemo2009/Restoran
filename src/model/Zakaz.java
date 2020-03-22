@@ -15,7 +15,7 @@ public class Zakaz implements Comparable<Zakaz> {
 
     public Zakaz(Restoran restoran, Posetitel posetitel, Map<Strava, Integer> korzina) {
         this.data = LocalDate.now();
-        this.nomerZakaza = String.valueOf(restoran.getZakazi().size() + 1);
+        this.nomerZakaza = String.valueOf(restoran.getZakazi().size() + 1);//это надо прятать в ресторане
         this.posetitel = posetitel;
         this.status = StatusZakaza.RAZMESHEN;
         korzina.forEach((s, i) -> listStrav.put(s, i));
@@ -31,6 +31,7 @@ public class Zakaz implements Comparable<Zakaz> {
     }
 
     // добавляет новое блюдо или изменяет текущее количество в заказе
+    
     public Zakaz dobavitStravuVZakaz(Strava... stravi) {
         if (this.status != StatusZakaza.VIPOLNEN) {
             for (Strava strava : stravi) {
@@ -49,7 +50,7 @@ public class Zakaz implements Comparable<Zakaz> {
     public int getOcenkaPosetitelia() {
         return ocenkaPosetitelia;
     }
-
+//по сеттерам и гетерам есть соглашение по тому что они возвращают.
     public Zakaz setOcenkaPosetitelia(int ocenkaPosetitelia) {
         this.ocenkaPosetitelia = ocenkaPosetitelia;
         return this;
@@ -102,7 +103,7 @@ public class Zakaz implements Comparable<Zakaz> {
         Zakaz zakaz = (Zakaz) o;
         return zakaz.getNomerZakaza().equals(this.nomerZakaza);
     }
-
+// отличается логика работы методов хешкод и екюал.
     @Override
     public int hashCode() {
         int result = 17;
